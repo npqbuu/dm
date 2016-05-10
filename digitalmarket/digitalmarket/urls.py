@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from products import views as products_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^detail/(?P<object_id>\d+)/$',products_views.detail_view, name='detail_view'),
+    url(r'^detail/(?P<slug>[\w-]+)/$',products_views.detail_slug_view, name='detail_slug_view'),
+    url(r'^list/$', products_views.list_view, name='list_view'),
 ]
