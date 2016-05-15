@@ -59,3 +59,5 @@ Lib/
 .Python
 *.py[cod]
 .idea/
+
+pip-selfcheck.json
