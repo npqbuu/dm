@@ -1,42 +1,50 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import Http404
+from django.db.models import Q
+
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView
+
+from digitalmarket.mixins import MultiSlugMixin, SubmitBtnMixin, LoginRequiredMixin
+from .mixins import ProductManagerMixin
+
+#import models
 from .models import Product
+
+#import forms
+from .forms import ProductModelForm
 # Create your views here.
 
-def create_view(request):
-    #FORM
-    template = "create_view.html"
-    context = {
-    }
-    return render(request, template, context)
+class ProductCreateView(LoginRequiredMixin, SubmitBtnMixin, CreateView):
+    model = Product
+    form_class = ProductModelForm
+    submit_btn = "Add Product"
 
-def detail_slug_view(request, slug=None):
-    #1 item
-    product = get_object_or_404(Product, slug=slug)
-    template = "detail_view.html"
-    context = {
-        "title" : product.title,
-        "description" : product.description,
-        "sale_price" : product.sale_price
-    }
-    return render(request, template, context)
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.user = user
+        valid_data = super(ProductCreateView, self).form_valid(form)
+        form.instance.managers.add(user)
+        #add all default users
+        return valid_data
 
-def detail_view(request, object_id=None):
-    #1 item
-    product = get_object_or_404(Product, id=object_id)
-    template = "detail_view.html"
-    context = {
-        "title" : product.title,
-        "description" : product.description,
-        "sale_price" : product.sale_price
-    }
-    return render(request, template, context)
+class ProductUpdateView(ProductManagerMixin,SubmitBtnMixin, MultiSlugMixin, UpdateView):
+    model = Product
+    form_class = ProductModelForm
+    submit_btn = "Update Product"
 
-def list_view(request):
-    #list of items
-    print  request
-    queryset = Product.objects.all()
-    template = "list_view.html"
-    context = {
-        "queryset" : queryset
-    }
-    return render(request, template, context)
+class ProductListView(ListView):
+    model = Product
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(ProductListView, self).get_queryset(**kwargs)
+        querry = self.request.GET.get("q")
+        if querry:
+            qs = qs.filter(
+                Q(title__icontains=querry)
+            )
+        return qs.order_by("title")
+
+class ProductDetailView(MultiSlugMixin, DetailView):
+    model = Product

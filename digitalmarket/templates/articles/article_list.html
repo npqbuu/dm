@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid cart-list">
+				<div class="row">
+                    {% for instance in object_list %}
+					<div class="col-sm-9 blog-content">
+						<article>
+							<header>
+								<h1><a href="{{ instance.get_absolute_url }}">
+										{{ instance }}
+								</h1>
+							</header>
+							<div class="post-date">
+									{{ instance.created }}
+							</div>
+							<div class="content">
+
+								<div class="container-fluid productlist">
+									<div class="row">
+										<div class="col-sm-4">
+											<a href="{{ instance.get_absolute_url }}"><img src="/media/{{ instance.media }}" class="img-responsive" alt="item"></a>
+										</div>
+                                        <div class="col-sm-8">
+											{{ instance.content|safe|truncatewords_html:50}}
+										</div>
+									</div>
+								</div>
+                            </div>
+						</article>
+					</div>
+                    {% empty %}
+                    <p>No product yet.</p>
+                    {% endfor %}
+					<div class="col-sm-3 blog-sidebar">
+						<div class="widget">
+							<h3>A Little About Us</h3>
+							<p>As an interesting side note, as a head without a body, I envy the dead. Daylight and everything. Spare me your space age technobabble, Attila the Hun! We'll go deliver this crate like professionals, and then we'll go home. </p>
+							<p>Oh, but you can. But you may have to metaphorically make a deal with the devil. And by "devil", I mean Robot Devil. And by "metaphorically", I mean get your coat. Shut up and get to the point!</p>
+							<hr>
+						</div>
+						<div class="widget">
+							<h3>Categories</h3>
+							<ul>
+								<li><a href="">News</a></li>
+								<li><a href="">Hobby</a></li>
+								<li><a href="">Summer</a></li>
+							</ul>
+							<hr>
+						</div>
+					</div>
+
+				</div>
+			</div>
+{% endblock %}
+

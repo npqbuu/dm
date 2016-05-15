@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid productlist">
+                {% for instance in object_list %}
+				<div class="row">
+					<div class="col-sm-4">
+						<a href="{{ instance.get_absolute_url }}">
+							<img src="/media/{{ instance.media }}" class="img-responsive" alt="item">
+							<span class="productlist-price-container">
+								<span class="product-price">
+									<span class="price">{{ instance.sale_price }}</span>
+								</span>
+							</span>
+						</a>
+					</div>
+                    {% empty %}
+                    <p>No product yet.</p>
+                    {% endfor %}
+                </div>
+    </div>
+{% endblock %}
+

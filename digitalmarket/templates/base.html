@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<title>DoubleT Store</title>
+		<meta charset="utf-8">
+		<meta name="description" content="DoubleT Store - Freeship worldwide">
+		<meta name="author" content="YONG">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="/static/css/style.css?v=5">
+		<link rel="stylesheet" href="/static/css/icomoon/style.css">
+		<link rel="shortcut icon" href="/static/img/ico/32.png" sizes="32x32" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" href="/static/img/ico/60.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizyes="72x72" href="/static/img/ico/72.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/img/ico/120.png" type="image/png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/img/ico/152.png" type="image/png"/>
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+        {% block head %}
+        
+        {% endblock %}
+	</head>
+
+	<body id="home">
+
+		<div class="container-fluid">
+			<div class="menu-wrapper">
+				<a href="#" class="close-menu visible-xs"><i class="icon-close"></i></a>
+				<h3 class="visible-xs">Navigation</h3>
+				<ul class="nav-list text-center effect">
+					<li class="active"><a href="/">Shop</a></li>
+					<li><a href="/about/">About</a></li>
+					<li><a href="/articles/">Blog</a></li>
+					<li><a href="/contact/">Contact</a></li>
+					<li><a href="/login/">Register</a></li>
+					<li><a href="/login/">Login</a></li>
+				</ul>
+				<div class="visible-xs mt-info">
+					<h3>Latest news</h3>
+					<ul>
+						<li><a href="blog-article.html">New collection</a></li>
+						<li><a href="blog-article.html">Home Sweet Home: Turn...</a></li>
+						<li><a href="blog-article.html">The Prisoner of Benda</a></li>
+					</ul>
+					<a href="http://demo.angelostudio.net" class="btn btn-outline-w">More Templates</a>
+				</div>
+			</div>
+		</div>	
+	
+		<div id="wrap">
+			<div id="main-nav" class="">
+				<div class="container-fluid">	
+					<div class="nav-header">
+						<a href='/' class="nav-brand">DoubleT <span>Store</span></a>
+						<a class="nav-icon pull-right visible-xs menu-link" href="#"><i class="icon-menu2"></i></a>
+						<a class="nav-icon-outline cart pull-right" href="/cart/"><i class="icon-cart"></i><span class="badge">3</span></a>
+					</div>
+				</div>
+			</div>
+
+			{% block nav %}
+			
+			{% endblock %}
+
+			{% block content %}
+			
+			{% endblock %}
+	
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="pull-right copyright">
+						<p>DoubleT <b>Store</b> &copy; 2016. Designed by <a href="http://facebook.com/whyohandgee" target="_blank">YONG</a>.</p>
+					</div>
+
+					<div class="pull-right copyright">
+							<ul class="social-links">
+								<li><a href="https://twitter.com/angelo_studio"><i class="icon-twitter"></i></a></li>
+								<li><a href="http://dribbble.com/angelo_studio"><i class="icon-dribbble"></i></a></li>
+								<li><a href="http://www.pinterest.com/angelostudio/"><i class="icon-pinterest"></i></a></li>
+							</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="/static/js/placeholders.min.js"></script>
+		<script type="text/javascript" src="/static/js/custom.js"></script>
+		
+	</body>
+</html>

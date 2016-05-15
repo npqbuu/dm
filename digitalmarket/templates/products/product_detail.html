@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<div class="container-fluid hidden-xs">
+				<div class="row">
+					<ol class="breadcrumb">
+					  <li><a href="/products/">Shop</a></li>
+					  <li class="active">{{ object }}</li>
+					</ol>
+				</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid product">
+				<div class="row visible-xs product-mobile">
+					<div class="col-xs-12 text-center">
+						<h2 class="product-title">{{ object }}</h2>
+						<div class="product-price">
+							<span class="price">{{ object.sale_price }}</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-8 ">
+						<img src="/media/{{ object.media }}" class="product-img img-responsive" alt="item">
+					</div>
+					<div class="col-sm-4 ">
+						<h2 class="product-title hidden-xs">{{ object }}</h2>
+						<div class="product-price hidden-xs">
+							<span class="price">{{ object.sale_price }}</span>
+						</div>
+						<div class="product-detail">
+							{{ object.description|safe }}
+						</div>
+						<form action="product2.html" method="POST" class="myform">
+							<div class="form-group clearfix">
+								<label class="control-label" >Size</label>
+								<select class="form-control">
+									<option value="XS">XS</option>
+									<option value="S">S</option>
+									<option value="M">M</option>
+									<option value="L">L</option>
+									<option value="XL">XL</option>
+								</select>
+							</div>
+
+							<ul class="product-colors">
+							  <li class="selected"><a class="white" style="background-color:#FFF"> </a></li>
+							  <li class=""><a style="background-color:#000"> </a></li>
+							  <li class=""><a style="background-color:#49A3F1"> </a></li>
+							  <li class=""><a style="background-color:#FF6279"> </a></li>
+							</ul>
+
+							<div class="product-btn">
+								<a href="" class="btn">Add To Cart</a>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-8 ">
+						<div class="paging clearfix">
+							<a class="btn btn-outline pull-left" href="product3.html"><i class="icon-arrow-left2 left"></i><span>Previous</span><span class="hidden-xs"> Product</span></a>
+							<a class="btn btn-outline pull-right" href="product1.html"><span>Next</span><span class="hidden-xs"> Product</span><i class="icon-arrow-right2 right"></i></a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+{% endblock %}
