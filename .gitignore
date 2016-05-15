@@ -59,4 +59,3 @@ Lib/
 .Python
 *.py[cod]
 .idea/
-static_cdn/
